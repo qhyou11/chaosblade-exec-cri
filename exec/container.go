@@ -125,7 +125,7 @@ func (e *removeActionExecutor) Exec(uid string, ctx context.Context, model *spec
 	// }
 	forceFlag := flags[ForceFlag]
 
-	err = client.RemoveContainer(ctx, ContainerId, judgeForce(forceFlag))
+	err = client.RemoveContainer(ctx, containerId, judgeForce(forceFlag))
 	if err != nil {
 		log.Errorf(ctx, spec.ContainerExecFailed.Sprintf("ContainerRemove", err))
 		return spec.ResponseFailWithFlags(spec.ContainerExecFailed, "ContainerRemove", err)
