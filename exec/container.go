@@ -120,9 +120,9 @@ func (e *removeActionExecutor) Exec(uid string, ctx context.Context, model *spec
 	containerName := flags[ContainerNameFlag.Name]
 	containerLabelSelector := parseContainerLabelSelector(flags[ContainerNameFlag.Name])
 	container, response := GetContainer(ctx, client, uid, containerId, containerName, containerLabelSelector)
-	if !response.Success {
-		return response
-	}
+	// if !response.Success {
+	// 	return response
+	// }
 	forceFlag := flags[ForceFlag]
 
 	err = client.RemoveContainer(ctx, container.ContainerId, judgeForce(forceFlag))
